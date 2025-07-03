@@ -1,19 +1,28 @@
 package com.shop.myshop.Application;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Shop {
-    private String shopid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
     private String name;
     private String owner;
     private String address;
     public Shop() {
     }
-    public Shop(String shopid, String name, String owner, String address) {
-        this.shopid = shopid;
+    public Shop(String id, String name, String owner, String address) {
+        this.id = id;
         this.name = name;
         this.owner = owner;
         this.address = address;
     }
-    public String getShopid() {
-        return shopid;
+    public String getid() {
+        return id;
     }
     public String getOwner() {
         return owner;
@@ -27,8 +36,8 @@ public class Shop {
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setShopid(String shopid) {
-        this.shopid = shopid;
+    public void setid(String shopid) {
+        this.id = shopid;
     }
     public void setName(String name) {
         this.name = name;
@@ -39,10 +48,11 @@ public class Shop {
     @Override
     public String toString() {
         return "Shop{" +
-                "shopid='" + shopid + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", owner='" + owner + '\'' +
                 ", address='" + address + '\'' +
                 '}';
     }
+
 }

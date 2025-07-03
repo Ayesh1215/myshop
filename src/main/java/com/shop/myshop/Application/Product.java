@@ -1,47 +1,51 @@
 package com.shop.myshop.Application;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Product {
-    private String prodid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String name;
-    private String price;
-    private String quantity;
-    private String shopid;
+    private Integer price;
+    private Integer quantity;
+
     public Product() {
     }
-    public Product(String prodid, String name, String price, String shopid, String quantity) {
-        this.prodid = prodid;
-        this.name = name;
-        this.price = price;
-        this.shopid = shopid;
-        this.quantity = quantity;
+
+    public Integer getId() {
+        return id;
     }
-    public String getProdid() {
-        return prodid;
+
+    public void setId(Integer id) {
+        this.id = id;
     }
-    public void setProdid(String prodid) {
-        this.prodid = prodid;
-    }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public String getPrice() {
+
+    public Integer getPrice() {
         return price;
     }
-    public void setPrice(String price) {
+
+    public void setPrice(Integer price) {
         this.price = price;
     }
-    public String getQuantity() {
+
+    public Integer getQuantity() {
         return quantity;
     }
-    public void setQuantity(String quantity) {
+
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-    public String getShopid() {
-        return shopid;
-    }
-    public void setShopid(String shopid) {
-        this.shopid = shopid;
     }
 }
