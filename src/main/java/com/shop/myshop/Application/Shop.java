@@ -1,48 +1,58 @@
 package com.shop.myshop.Application;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import java.util.ArrayList;
+import java.util.List;
 @Entity
+@Table(name = "Shop")
 public class Shop {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String owner;
     private String address;
+
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products = new ArrayList<>();
     public Shop() {
     }
-    public Shop(String id, String name, String owner, String address) {
+    public Shop(Integer id, String name, String owner, String address) {
         this.id = id;
         this.name = name;
         this.owner = owner;
         this.address = address;
     }
-    public String getid() {
+    public Integer getId() {
+
         return id;
     }
     public String getOwner() {
+
         return owner;
     }
     public String getName() {
+
         return name;
     }
     public String getAddress() {
+
         return address;
     }
     public void setAddress(String address) {
+
         this.address = address;
     }
-    public void setid(String shopid) {
-        this.id = shopid;
+    public void setId(Integer id) {
+
+        this.id = id;
     }
     public void setName(String name) {
+
         this.name = name;
     }
     public void setOwner(String owner) {
+
         this.owner = owner;
     }
     @Override
@@ -55,4 +65,8 @@ public class Shop {
                 '}';
     }
 
+    public void setProducts(List<Product> products) {
+        this.products = products;
+
+    }
 }

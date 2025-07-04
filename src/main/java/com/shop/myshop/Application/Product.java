@@ -1,19 +1,18 @@
 package com.shop.myshop.Application;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private Integer price;
     private Integer quantity;
-
+    @ManyToOne
+    @JoinColumn(name = "shop_id", nullable = false)
+    private  Shop shop;
     public Product() {
     }
 
@@ -47,5 +46,9 @@ public class Product {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }

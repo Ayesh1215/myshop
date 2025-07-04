@@ -6,5 +6,5 @@ import java.util.Optional;
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Integer> {
 
-    Optional<Shop> findById(String prodid);
+    Optional<Shop> findById(Integer id);
 }
