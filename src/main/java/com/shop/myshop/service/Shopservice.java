@@ -25,5 +25,14 @@ public class Shopservice {
     public void addshop(Shop shop){
         repository.save(shop);
     }
+    public Shop getShopByOwner(String ownerName) {
+        return repository.findByOwner(ownerName);
     }
+    public List<Product> getProductsByShopId(Integer shopId) {
+        Shop shop = repository.findById(shopId)
+                .orElseThrow(() -> new RuntimeException("Shop not found with ID: " + shopId));
+        return shop.getProducts();
+    }
+    }
+
 

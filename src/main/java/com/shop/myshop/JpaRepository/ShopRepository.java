@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface ShopRepository extends JpaRepository<Shop, Integer> {
 
     Optional<Shop> findById(Integer id);
+    Shop findByOwner(String owner);
 }

@@ -15,6 +15,9 @@ public class Shop {
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products = new ArrayList<>();
+    public List<Product> getProducts() {
+        return products;
+    }
     public Shop() {
     }
     public Shop(Integer id, String name, String owner, String address) {
@@ -69,4 +72,14 @@ public class Shop {
         this.products = products;
 
     }
+    public  List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
+
 }

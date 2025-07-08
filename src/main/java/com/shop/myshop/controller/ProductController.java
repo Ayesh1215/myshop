@@ -1,15 +1,17 @@
 package com.shop.myshop.controller;
 import com.shop.myshop.Application.Product;
+import com.shop.myshop.JpaRepository.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.shop.myshop.service.ProductService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
 @RestController
 public class ProductController {
     @Autowired
     private ProductService service;
+    @Autowired
+    private ShopRepository shopRepository;
 
     @RequestMapping("/product")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")

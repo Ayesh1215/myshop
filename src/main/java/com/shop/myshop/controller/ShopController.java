@@ -1,5 +1,7 @@
 package com.shop.myshop.controller;
+import com.shop.myshop.Application.Product;
 import com.shop.myshop.Application.Shop;
+import com.shop.myshop.JpaRepository.ShopRepository;
 import com.shop.myshop.service.Shopservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,6 +11,8 @@ import java.util.List;
 public class ShopController {
     @Autowired
     Shopservice service;
+    @Autowired
+    private ShopRepository shopRepository;
     @GetMapping("/shop")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public List<Shop> getshops(){
@@ -22,6 +26,11 @@ public class ShopController {
     public Shop getshopid(@PathVariable Integer shopid){
 
         return service.getshopsid(shopid);
+    }
+    @GetMapping("/shop/{shopid}/product")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public List<Product> getProductsByShopId(@PathVariable Integer shopid) {
+        return service.getProductsByShopId(shopid);
     }
     @PostMapping("/shop")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
