@@ -1,6 +1,6 @@
 package com.shop.myshop.Config;
 import com.shop.myshop.JpaRepository.EmployeeRepository;
-import com.shop.myshop.service.Employee;
+import com.shop.myshop.Application.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

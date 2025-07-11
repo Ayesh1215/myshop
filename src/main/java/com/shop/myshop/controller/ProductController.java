@@ -12,11 +12,9 @@ public class ProductController {
     private ProductService service;
     @Autowired
     private ShopRepository shopRepository;
-
     @RequestMapping("/product")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public List<Product> getProducts() {
-
         return service.getProducts();
     }
     @GetMapping("/product/{prodId}")
@@ -24,16 +22,24 @@ public class ProductController {
     public Product getProductsById(@PathVariable Integer prodId) {
         return service.getProductsId(prodId);
     }
+    @PutMapping("/product/{prodId}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public Product updateProductsById(@PathVariable Integer prodId) {
+        return service.getProductsId(prodId);
+    }
+    @DeleteMapping("/product/{prodId}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public Product deleteProductsById(@PathVariable Integer prodId) {
+        return service.getProductsId(prodId);
+    }
     @GetMapping("/product/name/{name}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public Product getName(@PathVariable String name) {
-
         return service.getName(name);
     }
     @PostMapping("/product")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public void addProduct(@RequestBody Product prod) {
-
         service.addProduct(prod);
     }
 }

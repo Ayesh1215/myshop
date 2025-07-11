@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 @RestController
 public class ShopController {
     @Autowired
@@ -16,15 +17,21 @@ public class ShopController {
     @GetMapping("/shop")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public List<Shop> getshops(){
-
         return service.getshops();
-
     }
     @GetMapping("/shop/{shopid}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-
     public Shop getshopid(@PathVariable Integer shopid){
-
+        return service.getshopsid(shopid);
+    }
+    @DeleteMapping("/shop/{shopid}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public Shop deleteShopById(@PathVariable Integer shopid){
+        return service.getshopsid(shopid);
+    }
+    @PutMapping("/shop/{shopid}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public Shop updateShopById(@PathVariable Integer shopid){
         return service.getshopsid(shopid);
     }
     @GetMapping("/shop/{shopid}/product")
@@ -35,7 +42,6 @@ public class ShopController {
     @PostMapping("/shop")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public void addshop(@RequestBody Shop sho){
-
         service.addshop(sho);
     }
 }

@@ -1,6 +1,5 @@
-package com.shop.myshop.service;
+package com.shop.myshop.Application;
 import jakarta.persistence.*;
-import com.shop.myshop.service.Roles;
 
 @Entity
 @Table(name = "roles")

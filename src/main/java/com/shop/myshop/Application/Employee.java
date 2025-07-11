@@ -1,4 +1,4 @@
-package com.shop.myshop.service;
+package com.shop.myshop.Application;
 import jakarta.persistence.*;
 import java.util.Set;
 @Entity
